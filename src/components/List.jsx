@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { MedicService } from "services/MedicService";
+import foto from "assets/foto.jpg";
 
 function List() {
   const [medicList, setMedicList] = useState([]);
@@ -11,10 +12,7 @@ function List() {
 
   useEffect(() => {
     getList();
-  });
-  {
-    /*onClick="findMedicById('${item._id}'); openModalDetails();"*/
-  }
+  }, []);
 
   return (
     <section
@@ -23,11 +21,11 @@ function List() {
     >
       {medicList.map((item) => (
         <div
-          id="medic${item.id}"
+          id={item.id}
           key={item.id}
           className="flex flex-col items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer"
         >
-          <img src="assets/foto.jpg" alt="image not loaded" />
+          <img src={foto} alt="Not loaded" />
           <div>
             <p>{item.name}</p>
             <p>CRM: {item.CRM}</p>

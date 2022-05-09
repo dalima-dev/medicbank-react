@@ -11,6 +11,6 @@ const medicContext = {
 
 
 export const Api = {
-  baseUrl: `https://medicbank-server.herokuapp.com/`,
+  baseUrl: `https://medicbank-server.herokuapp.com`,
   ...medicContext,
 };

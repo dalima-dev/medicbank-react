@@ -1,9 +1,14 @@
+import Header from './Header'
+import Main from './Main'
+import Footer from './Footer'
 
 function Home() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </div>
+    <>
+      <Header />
+      <Main />
+      <Footer />
+    </>
   );
 }
 

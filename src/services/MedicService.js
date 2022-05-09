@@ -17,7 +17,7 @@ const parseTransformItem = (response) =>
 
 export const MedicService = {
   getList: () =>
-    fetch(Api.medicLista(), { method: "GET" }).then(parseTransformLista),
+    fetch(Api.medicList(), { method: "GET" }).then(parseTransformLista),
 
   getById: (id) =>
     fetch(Api.medicById(id), { method: "GET" }).then(parseTransformItem),

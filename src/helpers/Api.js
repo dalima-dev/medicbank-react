@@ -1,6 +1,6 @@
 const medicContext = {
-  medicEndpoint: () => `${Api.baseUrl}/medics`,
-  medicLista: () => `${medicContext.medicEndpoint()}/find-medics`,
+  medicEndpoint: () => `${Api.baseUrl}/medic`,
+  medicList: () => `${medicContext.medicEndpoint()}/find-medics`,
   medicById: (id) => `${medicContext.medicEndpoint()}/find-medics/${id}`,
   createMedic: () => `${medicContext.medicEndpoint()}/create`,
   updateMedicById: (id) =>

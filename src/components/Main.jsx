@@ -1,6 +1,9 @@
-import Lista from "./Lista";
+import List from "./List";
 
 function Main() {
+  {
+    /*onClick="closeModalRegisterUpdate()"*/
+  }
 
   return (
     <main className="container mx-auto p-2 min-h-[40rem] sm:min-h-[60rem]">
@@ -17,10 +20,7 @@ function Main() {
           <h2 id="updateTitle" className="hidden text-lg">
             Update medic:
           </h2>
-          <a
-            onClick="closeModalRegisterUpdate()"
-            className="text-red-500 text-xl transition-all ease-out duration-150 hover:scale-150 cursor-pointer"
-          >
+          <a className="text-red-500 text-xl transition-all ease-out duration-150 hover:scale-150 cursor-pointer">
             x
           </a>
         </div>
@@ -66,13 +66,13 @@ function Main() {
               <p>Choose medic's specialties (at least two specialties):</p>
               <div>
                 <input type="checkbox" name="alergology" value="Alergology" />
-                <label id="alergology" for="alergology">
+                <label id="alergology" htmlFor="alergology">
                   Alergology
                 </label>
               </div>
               <div>
                 <input type="checkbox" name="angiology" value="Angiology" />
-                <label id="angiology" for="angiology">
+                <label id="angiology" htmlFor="angiology">
                   Angiology
                 </label>
               </div>
@@ -82,7 +82,7 @@ function Main() {
                   name="bucoMaxillo"
                   value="Buco maxillo"
                 />
-                <label id="bucoMaxillo" for="bucoMaxillo">
+                <label id="bucoMaxillo" htmlFor="bucoMaxillo">
                   Buco maxillo
                 </label>
               </div>
@@ -92,7 +92,7 @@ function Main() {
                   name="clinicCardiology"
                   value="Clinic cardiology"
                 />
-                <label id="clinicCardiology" for="clinicCardiology">
+                <label id="clinicCardiology" htmlFor="clinicCardiology">
                   Clinic cardiology
                 </label>
               </div>
@@ -102,7 +102,7 @@ function Main() {
                   name="childrensCardiology"
                   value="Children's cardiology"
                 />
-                <label id="childrensCardiology" for="childrensCardiology">
+                <label id="childrensCardiology" htmlFor="childrensCardiology">
                   Children's Cardiology
                 </label>
               </div>
@@ -112,7 +112,7 @@ function Main() {
                   name="headNeckSurgery"
                   value="Head and neck surgery"
                 />
-                <label id="headNeckSurgery" for="headNeckSurgery">
+                <label id="headNeckSurgery" htmlFor="headNeckSurgery">
                   Head and neck surgery
                 </label>
               </div>
@@ -122,7 +122,7 @@ function Main() {
                   name="cardiacSurgery"
                   value="Cardiac surgery"
                 />
-                <label id="cardiacSurgery" for="cardiacSurgery">
+                <label id="cardiacSurgery" htmlFor="cardiacSurgery">
                   Cardiac surgery
                 </label>
               </div>
@@ -132,7 +132,7 @@ function Main() {
                   name="chestSurgery"
                   value="Chest surgery"
                 />
-                <label id="chestSurgery" for="chestSurgery">
+                <label id="chestSurgery" htmlFor="chestSurgery">
                   Chest surgery
                 </label>
               </div>
@@ -146,7 +146,7 @@ function Main() {
         </div>
       </section>
 
-      <Lista />
+      <List />
     </main>
   );
 }

@@ -1,16 +1,22 @@
-import Header from './Header'
-import Main from './Main'
-import Footer from './Footer'
-import { useState } from 'react';
+import Header from "./Header";
+import Main from "./Main";
+import Footer from "./Footer";
+import { useState } from "react";
 
 function Home() {
+  const [registerUpdateModalState, setRegisterUpdateModalState] =
+    useState(false);
 
-  const [openModal, setOpenModal] = useState('hidden')
 
   return (
     <>
-      <Header />
-      <Main />
+      <Header
+        changeRegisterUpdateModalState={(state) =>
+          setRegisterUpdateModalState(state)
+        }
+        registerUpdateModalState = {registerUpdateModalState}
+      />
+      <Main registerUpdateModalState={registerUpdateModalState} />
       <Footer />
     </>
   );

@@ -1,7 +1,7 @@
 function ModalRegisterUpdate() {
   return (
     <section
-    className="hidden flex-col z-[9999] absolute left-[50%] top-[60%] translate-x-[-50%] translate-y-[-50%] max-w-xs sm:max-w-lg container bg-blue-500 rounded-b-md rounded-t-md"
+    className="flex flex-col z-[9999] absolute left-[50%] top-[60%] translate-x-[-50%] translate-y-[-50%] max-w-xs sm:max-w-lg container bg-blue-500 rounded-b-md rounded-t-md"
     id="overlay"
   >
     <div className="flex flex-row justify-between items-center px-4 py-1">

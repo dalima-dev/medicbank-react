@@ -1,15 +1,12 @@
-function ModalRegisterUpdate() {
+function ModalRegisterUpdate({ registerUpdateModalState }) {
   return (
     <section
     className="flex flex-col z-[9999] absolute left-[50%] top-[60%] translate-x-[-50%] translate-y-[-50%] max-w-xs sm:max-w-lg container bg-blue-500 rounded-b-md rounded-t-md"
     id="overlay"
   >
     <div className="flex flex-row justify-between items-center px-4 py-1">
-      <h2 id="registerTitle" className="hidden text-lg">
-        Register medic:
-      </h2>
-      <h2 id="updateTitle" className="hidden text-lg">
-        Update medic:
+      <h2 id="registerTitle" className="flex text-lg">
+        {`${registerUpdateModalState[1]}:`}
       </h2>
       <a className="text-red-500 text-xl transition-all ease-out duration-150 hover:scale-150 cursor-pointer">
         x

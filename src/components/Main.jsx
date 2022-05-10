@@ -9,7 +9,7 @@ function Main({ registerUpdateModalState }) {
         <ModalDetails />
       </section>
 
-      {registerUpdateModalState && <ModalRegisterUpdate />}
+      {registerUpdateModalState[0] && <ModalRegisterUpdate registerUpdateModalState={registerUpdateModalState} />}
 
       <List />
     </main>

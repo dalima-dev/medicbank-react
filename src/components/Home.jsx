@@ -4,9 +4,12 @@ import Footer from "./Footer";
 import { useState } from "react";
 
 function Home() {
-  const [registerUpdateModalState, setRegisterUpdateModalState] =
-    useState(false);
+  const [registerUpdateModalState, setRegisterUpdateModalState] = useState([
+    false,
+    "",
+  ]);
 
+  console.log(registerUpdateModalState);
 
   return (
     <>
@@ -14,7 +17,7 @@ function Home() {
         changeRegisterUpdateModalState={(state) =>
           setRegisterUpdateModalState(state)
         }
-        registerUpdateModalState = {registerUpdateModalState}
+        registerUpdateModalState={registerUpdateModalState}
       />
       <Main registerUpdateModalState={registerUpdateModalState} />
       <Footer />

@@ -23,13 +23,9 @@ function Home() {
     setRegisterUpdateModalState(arr);
   }
 
-  console.log(registerUpdateModalState);
-
   return (
     <>
-      <Header
-        openRegisterModal={openRegisterModal}
-      />
+      <Header openRegisterModal={openRegisterModal} />
       <Main
         registerUpdateModalState={registerUpdateModalState}
         closeRegisterUpdateModal={closeRegisterUpdateModal}

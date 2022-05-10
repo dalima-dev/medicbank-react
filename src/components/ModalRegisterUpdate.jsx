@@ -8,12 +8,12 @@ function ModalRegisterUpdate({ registerUpdateModalState, closeRegisterUpdateModa
         <h2 id="registerTitle" className="flex text-lg">
           {`${registerUpdateModalState[1]}:`}
         </h2>
-        <a
+        <button
           className="text-red-500 text-xl transition-all ease-out duration-150 hover:scale-150 cursor-pointer"
           onClick={closeRegisterUpdateModal}
         >
           x
-        </a>
+        </button>
       </div>
 
       <div className="p-2">

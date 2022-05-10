@@ -1,6 +1,5 @@
 function Header() {
-  {
-    /*onClick="openModalRegisterUpdate('register')"*/
+  function openModalRegisterUpdate(){
   }
   return (
     <header className="m-2 p-5 flex justify-around items-center gap-4 bg-blue-400 rounded">

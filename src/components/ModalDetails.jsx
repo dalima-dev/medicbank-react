@@ -1,22 +1,17 @@
 import foto from "assets/foto.jpg";
-import { useEffect, useState } from "react";
-import { MedicService } from "services/MedicService";
 
-function ModalDetails({ id }) {
-  const [medic, setMedic] = useState({});
-
-  const getById = async (id) => {
-    const response = await MedicService.getById(id);
-    setMedic(response);
-    console.log('caralhi');
-  };
-
-  useEffect(() => {
-    getById(id);
-  }, []);
-
-  console.log(medic);
-
+function ModalDetails({ medic }) {
+  {
+    /* const medic = {
+    name: "fdasfa",
+    CRM: 435234,
+    landline: 435234,
+    phoneNumber: 435234,
+    CEP: 435234,
+    specialties: ["fdasfas", "fdsafads", "fdasfdsaaf"],
+  }; 
+*/
+  }
   return (
     <div
       id="modalDetails"

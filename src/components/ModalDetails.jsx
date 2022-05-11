@@ -1,17 +1,6 @@
 import foto from "assets/foto.jpg";
 
-function ModalDetails({ medic }) {
-  {
-    /* const medic = {
-    name: "fdasfa",
-    CRM: 435234,
-    landline: 435234,
-    phoneNumber: 435234,
-    CEP: 435234,
-    specialties: ["fdasfas", "fdsafads", "fdasfdsaaf"],
-  }; 
-*/
-  }
+function ModalDetails({ medic, closeDetailsModal }) {
   return (
     <div
       id="modalDetails"
@@ -19,7 +8,10 @@ function ModalDetails({ medic }) {
     >
       <div className="flex flex-row items-center justify-between">
         <p>{medic.name}</p>
-        <button className="mx-2 text-red-500 text-2xl transition-all ease-out duration-150 hover:scale-150 cursor-pointer">
+        <button
+          onClick={closeDetailsModal}
+          className="mx-2 text-red-500 text-2xl transition-all ease-out duration-150 hover:scale-150 cursor-pointer"
+        >
           x
         </button>
       </div>
@@ -31,8 +23,8 @@ function ModalDetails({ medic }) {
         <p>Phone Number: {medic.phoneNumber}</p>
         <p>CEP: {medic.CEP}</p>
         <p>Specialties:</p>
-        {medic.specialties.map(function (specialty) {
-          return <p>{specialty}</p>;
+        {medic.specialties.map(function (specialty, index) {
+          return <p key={index}>{specialty}</p>;
         })}
       </div>
       <div className="flex justify-around">

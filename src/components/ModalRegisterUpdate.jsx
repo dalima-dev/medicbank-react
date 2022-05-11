@@ -1,6 +1,9 @@
+import { useState } from "react";
+
 function ModalRegisterUpdate({
   registerUpdateModalState,
   closeRegisterUpdateModal,
+  registerUpdateState,
 }) {
   return (
     <section
@@ -128,7 +131,16 @@ function ModalRegisterUpdate({
             </div>
           </div>
 
-          <div id="registerUpdateButton" className="flex justify-center"></div>
+          <div id="registerUpdateButton" className="flex justify-center">
+            {registerUpdateState &&
+              <button className="bg-blue-800 shadow-lg shadow-blue-800/80 p-2 rounded transition-all ease-in-out duration-300 hover:scale-105">
+                SUBMIT
+              </button>
+            }
+            {!registerUpdateState && <button className="bg-blue-800 shadow-lg shadow-blue-800/80 p-2 rounded transition-all ease-in-out duration-300 hover:scale-105">
+              UPDATE
+            </button>}
+          </div>
         </div>
       </div>
     </section>

@@ -8,26 +8,25 @@ function Home() {
     false,
     "",
   ]);
+  const [registerUpdateState, setRegisterUpdateState] = useState(true);
 
   function openRegisterModal() {
-    const arr = [];
-    arr[0] = true;
-    arr[1] = "Register Medic";
-    setRegisterUpdateModalState(arr);
+    setRegisterUpdateState(true);
+    setRegisterUpdateModalState([true, "Register medic"]);
   }
 
   function closeRegisterUpdateModal() {
-    const arr = [];
-    arr[0] = false;
-    arr[1] = "";
-    setRegisterUpdateModalState(arr);
+    setRegisterUpdateModalState([false, ""]);
   }
 
   return (
     <>
       <Header openRegisterModal={openRegisterModal} />
       <Main
+        registerUpdateState={registerUpdateState}
+        setRegisterUpdateState={setRegisterUpdateState}
         registerUpdateModalState={registerUpdateModalState}
+        setRegisterUpdateModalState={setRegisterUpdateModalState}
         closeRegisterUpdateModal={closeRegisterUpdateModal}
       />
       <Footer />

@@ -4,7 +4,13 @@ import { MedicService } from "services/MedicService";
 import ModalDetails from "./ModalDetails";
 import ModalRegisterUpdate from "./ModalRegisterUpdate";
 
-function Main({ registerUpdateModalState, closeRegisterUpdateModal }) {
+function Main({
+  registerUpdateModalState,
+  setRegisterUpdateModalState,
+  closeRegisterUpdateModal,
+  registerUpdateState,
+  setRegisterUpdateState,
+}) {
   const [openDetailsModalState, setOpenDetailsModalState] = useState(false);
   const [id, setIdState] = useState("");
   const [medic, setMedic] = useState({ specialties: [] });
@@ -16,10 +22,6 @@ function Main({ registerUpdateModalState, closeRegisterUpdateModal }) {
     setMedicList(response);
   };
 
-  useEffect(() => {
-    getList();
-  }, [medicListLength]);
-
   const getById = async (id) => {
     if (id) {
       const response = await MedicService.getById(id);
@@ -27,19 +29,33 @@ function Main({ registerUpdateModalState, closeRegisterUpdateModal }) {
     }
   };
 
+  const create = async (medic) => {
+    await MedicService.create(medic);
+    setMedicListLength(medicListLength + 1);
+  };
+
   const deleteById = async (id) => {
     await MedicService.deleteById(id);
     setMedicListLength(medicListLength - 1);
   };
+
+  useEffect(() => {
+    getById(id);
+  }, [id]);
+
+  useEffect(() => {
+    getList();
+  }, [medicListLength]);
 
   function deleteButton(id) {
     deleteById(id);
     closeDetailsModal();
   }
 
-  useEffect(() => {
-    getById(id);
-  }, [id]);
+  function openUpdateModal() {
+    setRegisterUpdateState(false);
+    setRegisterUpdateModalState([true, "Update medic"]);
+  }
 
   function openDetailsModal(id) {
     setOpenDetailsModalState(true);
@@ -55,6 +71,7 @@ function Main({ registerUpdateModalState, closeRegisterUpdateModal }) {
       <section id="chosenMedic">
         {openDetailsModalState && (
           <ModalDetails
+            openUpdateModal={openUpdateModal}
             closeDetailsModal={closeDetailsModal}
             deleteButton={deleteButton}
             medic={medic}
@@ -64,6 +81,7 @@ function Main({ registerUpdateModalState, closeRegisterUpdateModal }) {
 
       {registerUpdateModalState[0] && (
         <ModalRegisterUpdate
+          registerUpdateState={registerUpdateState}
           registerUpdateModalState={registerUpdateModalState}
           closeRegisterUpdateModal={closeRegisterUpdateModal}
         />

@@ -1,6 +1,11 @@
 import foto from "assets/foto.jpg";
 
-function ModalDetails({ medic, closeDetailsModal, deleteButton }) {
+function ModalDetails({
+  medic,
+  openUpdateModal,
+  closeDetailsModal,
+  deleteButton,
+}) {
   return (
     <div
       id="modalDetails"
@@ -28,7 +33,10 @@ function ModalDetails({ medic, closeDetailsModal, deleteButton }) {
         })}
       </div>
       <div className="flex justify-around">
-        <button className="m-2 p-3 rounded bg-blue-800 shadow-lg shadow-blue-800/80 transition duration-300 ease-in-out hover:scale-110">
+        <button
+          onClick={openUpdateModal}
+          className="m-2 p-3 rounded bg-blue-800 shadow-lg shadow-blue-800/80 transition duration-300 ease-in-out hover:scale-110"
+        >
           UPDATE
         </button>
         <button

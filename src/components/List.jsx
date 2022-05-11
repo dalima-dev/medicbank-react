@@ -1,20 +1,6 @@
-import { useEffect, useState } from "react";
-import { MedicService } from "services/MedicService";
 import foto from "assets/foto.jpg";
 
-function List({ openDetailsModal }) {
-  const [medicList, setMedicList] = useState([]);
-
-  const getList = async () => {
-    const response = await MedicService.getList();
-    setMedicList(response);
-    console.log(response);
-  };
-
-  useEffect(() => {
-    getList();
-  }, []);
-
+function List({ openDetailsModal, medicList }) {
   return (
     <section
       id="medicList"

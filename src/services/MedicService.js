@@ -23,7 +23,7 @@ export const MedicService = {
     fetch(Api.medicById(id), { method: "GET" }).then(parseTransformItem),
 
   create: (medic) =>
-    fetch(Api.createPaleta(), {
+    fetch(Api.createMedic(), {
       method: "POST",
       body: JSON.stringify(medic),
       mode: "cors",
@@ -31,7 +31,7 @@ export const MedicService = {
     }).then(parseResponse),
 
   updtateById: (id, medic) =>
-    fetch(Api.updatePaletaById(id), {
+    fetch(Api.updateMedicById(id), {
       method: "PUT",
       body: JSON.stringify(medic),
       mode: "cors",
@@ -40,5 +40,5 @@ export const MedicService = {
       },
     }).then(parseResponse),
   deleteById: (id) =>
-    fetch(Api.deletePaletaById(id), { method: "DELETE" }).then(parseResponse),
+    fetch(Api.deleteMedicById(id), { method: "DELETE" }).then(parseResponse),
 };

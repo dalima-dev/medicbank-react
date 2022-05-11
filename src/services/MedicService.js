@@ -30,7 +30,7 @@ export const MedicService = {
       headers: { "Content-Type": "application/json" },
     }).then(parseResponse),
 
-  updtateById: (id, medic) =>
+  updateById: (id, medic) =>
     fetch(Api.updateMedicById(id), {
       method: "PUT",
       body: JSON.stringify(medic),

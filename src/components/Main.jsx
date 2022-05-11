@@ -15,7 +15,9 @@ function Main({
   const [id, setIdState] = useState("");
   const [medic, setMedic] = useState({ specialties: [] });
   const [medicList, setMedicList] = useState([]);
-  const [medicListLength, setMedicListLength] = useState(0);
+  const [createMedic, setCreateMedic] = useState(1);
+  const [updateMedic, setUpdateMedic] = useState(1);
+  const [deleteMedic, setDeleteMedic] = useState(1);
 
   const getList = async () => {
     const response = await MedicService.getList();
@@ -31,12 +33,17 @@ function Main({
 
   const create = async (medic) => {
     await MedicService.create(medic);
-    setMedicListLength(medicListLength + 1);
+    setCreateMedic(createMedic + 1);
+  };
+
+  const updateById = async (id, medic) => {
+    await MedicService.updateById(id, medic);
+    setUpdateMedic(updateMedic + 1);
   };
 
   const deleteById = async (id) => {
     await MedicService.deleteById(id);
-    setMedicListLength(medicListLength - 1);
+    setDeleteMedic(deleteMedic + 1);
   };
 
   useEffect(() => {
@@ -45,11 +52,21 @@ function Main({
 
   useEffect(() => {
     getList();
-  }, [medicListLength]);
+  }, [createMedic, updateMedic, deleteMedic]);
 
   function deleteButton(id) {
     deleteById(id);
     closeDetailsModal();
+  }
+
+  function submitButton(medic) {
+    create(medic);
+    closeRegisterUpdateModal();
+  }
+
+  function updateButton(id, medic) {
+    updateById(id, medic);
+    closeRegisterUpdateModal();
   }
 
   function openUpdateModal() {
@@ -84,6 +101,9 @@ function Main({
           registerUpdateState={registerUpdateState}
           registerUpdateModalState={registerUpdateModalState}
           closeRegisterUpdateModal={closeRegisterUpdateModal}
+          submitButton={submitButton}
+          updateButton={updateButton}
+          id={id}
         />
       )}
 

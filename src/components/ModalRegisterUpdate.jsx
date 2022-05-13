@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function ModalRegisterUpdate({
   registerUpdateModalState,
@@ -26,7 +26,7 @@ function ModalRegisterUpdate({
   const [isCardiacSurgeryChecked, setIsCardiacSurgeryChecked] = useState(false);
   const [isChestSurgeryChecked, setIsChestSurgeryChecked] = useState(false);
 
-  function selectSpecialties() {
+  const selectSpecialties = useCallback(() => {
     const checkedSpecialties = [
       isAlergologyChecked,
       isAngiologyChecked,
@@ -56,10 +56,6 @@ function ModalRegisterUpdate({
     });
 
     setSpecialties(changedSpecialties);
-  }
-
-  useEffect(() => {
-    selectSpecialties();
   }, [
     isAlergologyChecked,
     isAngiologyChecked,
@@ -70,6 +66,10 @@ function ModalRegisterUpdate({
     isCardiacSurgeryChecked,
     isChestSurgeryChecked,
   ]);
+
+  useEffect(() => {
+    selectSpecialties();
+  }, [selectSpecialties]);
 
   const newOrUpdatedMedic = {
     name,

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function ModalRegisterUpdate({
   registerUpdateModalState,
@@ -15,7 +15,63 @@ function ModalRegisterUpdate({
   const [CEP, setCEP] = useState(0);
   const [specialties, setSpecialties] = useState([]);
 
-  const newUpdatedMedic = {
+  const [isAlergologyChecked, setIsAlergologyChecked] = useState(false);
+  const [isAngiologyChecked, setIsAngiologyChecked] = useState(false);
+  const [isBucoMaxilloChecked, setIsBucoMaxilloChecked] = useState(false);
+  const [isClinicCardiologyChecked, setIsClinicCardiologyChecked] =
+    useState(false);
+  const [isChildrensCardiologyChecked, setIsChildrensCardiologyChecked] =
+    useState(false);
+  const [isHeadAndNeckChecked, setIsHeadAndNeckChecked] = useState(false);
+  const [isCardiacSurgeryChecked, setIsCardiacSurgeryChecked] = useState(false);
+  const [isChestSurgeryChecked, setIsChestSurgeryChecked] = useState(false);
+
+  function selectSpecialties() {
+    const checkedSpecialties = [
+      isAlergologyChecked,
+      isAngiologyChecked,
+      isBucoMaxilloChecked,
+      isClinicCardiologyChecked,
+      isChildrensCardiologyChecked,
+      isHeadAndNeckChecked,
+      isCardiacSurgeryChecked,
+      isChestSurgeryChecked,
+    ];
+
+    const specialtiesNames = [
+      "Alergology",
+      "Angiology",
+      "Buco Maxillo",
+      "Clinic cardiology",
+      `Children's cardiology`,
+      "Head and neck surgery",
+      "Cardiac surgery",
+      "Chest surgery",
+    ];
+
+    const changedSpecialties = [];
+
+    checkedSpecialties.forEach((checked, index) => {
+      checked && changedSpecialties.push(specialtiesNames[index]);
+    });
+
+    setSpecialties(changedSpecialties);
+  }
+
+  useEffect(() => {
+    selectSpecialties();
+  }, [
+    isAlergologyChecked,
+    isAngiologyChecked,
+    isBucoMaxilloChecked,
+    isClinicCardiologyChecked,
+    isChildrensCardiologyChecked,
+    isHeadAndNeckChecked,
+    isCardiacSurgeryChecked,
+    isChestSurgeryChecked,
+  ]);
+
+  const newOrUpdatedMedic = {
     name,
     CRM,
     landline,
@@ -68,7 +124,6 @@ function ModalRegisterUpdate({
             id="landline"
             placeholder="Landline"
             value={landline}
-
             onChange={(e) => setLandline(e.target.value)}
           />
           <input
@@ -92,19 +147,34 @@ function ModalRegisterUpdate({
           <div className="py-1 flex flex-col gap-2">
             <p>Choose medic's specialties (at least two specialties):</p>
             <div>
-              <input type="checkbox" name="alergology" value="Alergology"/>
+              <input
+                onChange={(e) => setIsAlergologyChecked(e.target.checked)}
+                type="checkbox"
+                name="alergology"
+                value="Alergology"
+              />
               <label id="alergology" htmlFor="alergology">
                 Alergology
               </label>
             </div>
             <div>
-              <input type="checkbox" name="angiology" value="Angiology" />
+              <input
+                onChange={(e) => setIsAngiologyChecked(e.target.checked)}
+                type="checkbox"
+                name="angiology"
+                value="Angiology"
+              />
               <label id="angiology" htmlFor="angiology">
                 Angiology
               </label>
             </div>
             <div>
-              <input type="checkbox" name="bucoMaxillo" value="Buco maxillo" />
+              <input
+                onChange={(e) => setIsBucoMaxilloChecked(e.target.checked)}
+                type="checkbox"
+                name="bucoMaxillo"
+                value="Buco maxillo"
+              />
               <label id="bucoMaxillo" htmlFor="bucoMaxillo">
                 Buco maxillo
               </label>
@@ -114,6 +184,7 @@ function ModalRegisterUpdate({
                 type="checkbox"
                 name="clinicCardiology"
                 value="Clinic cardiology"
+                onChange={(e) => setIsClinicCardiologyChecked(e.target.checked)}
               />
               <label id="clinicCardiology" htmlFor="clinicCardiology">
                 Clinic cardiology
@@ -124,6 +195,9 @@ function ModalRegisterUpdate({
                 type="checkbox"
                 name="childrensCardiology"
                 value="Children's cardiology"
+                onChange={(e) =>
+                  setIsChildrensCardiologyChecked(e.target.checked)
+                }
               />
               <label id="childrensCardiology" htmlFor="childrensCardiology">
                 Children's Cardiology
@@ -134,6 +208,7 @@ function ModalRegisterUpdate({
                 type="checkbox"
                 name="headNeckSurgery"
                 value="Head and neck surgery"
+                onChange={(e) => setIsHeadAndNeckChecked(e.target.checked)}
               />
               <label id="headNeckSurgery" htmlFor="headNeckSurgery">
                 Head and neck surgery
@@ -144,6 +219,7 @@ function ModalRegisterUpdate({
                 type="checkbox"
                 name="cardiacSurgery"
                 value="Cardiac surgery"
+                onChange={(e) => setIsCardiacSurgeryChecked(e.target.checked)}
               />
               <label id="cardiacSurgery" htmlFor="cardiacSurgery">
                 Cardiac surgery
@@ -154,6 +230,7 @@ function ModalRegisterUpdate({
                 type="checkbox"
                 name="chestSurgery"
                 value="Chest surgery"
+                onChange={(e) => setIsChestSurgeryChecked(e.target.checked)}
               />
               <label id="chestSurgery" htmlFor="chestSurgery">
                 Chest surgery
@@ -164,7 +241,7 @@ function ModalRegisterUpdate({
           <div id="registerUpdateButton" className="flex justify-center">
             {registerUpdateState && (
               <button
-                onClick={() => submitButton(newUpdatedMedic)}
+                onClick={() => submitButton(newOrUpdatedMedic)}
                 className="bg-blue-800 shadow-lg shadow-blue-800/80 p-2 rounded transition-all ease-in-out duration-300 hover:scale-105"
               >
                 SUBMIT
@@ -172,7 +249,7 @@ function ModalRegisterUpdate({
             )}
             {!registerUpdateState && (
               <button
-                onClick={() => updateButton(id, newUpdatedMedic)}
+                onClick={() => updateButton(id, newOrUpdatedMedic)}
                 className="bg-blue-800 shadow-lg shadow-blue-800/80 p-2 rounded transition-all ease-in-out duration-300 hover:scale-105"
               >
                 UPDATE

@@ -1,3 +1,3 @@
-## medicbank-react
+# medicbank-react
 
 MedicBank React App

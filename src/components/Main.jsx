@@ -48,7 +48,7 @@ function Main({
 
   useEffect(() => {
     getById(id);
-  }, [id]);
+  }, [id,  updateMedic]);
 
   useEffect(() => {
     getList();
@@ -72,6 +72,7 @@ function Main({
   function openUpdateModal() {
     setRegisterUpdateState(false);
     setRegisterUpdateModalState([true, "Update medic"]);
+    closeDetailsModal()
   }
 
   function openDetailsModal(id) {
